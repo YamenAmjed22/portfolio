@@ -1,0 +1,16 @@
+<section class="bg-gray-800 py-12 px-6 text-center" id="skills">
+  <h2 class="text-3xl font-semibold text-blue-300 mb-8">My Skills</h2>
+  <div class="flex flex-wrap justify-center gap-6">
+
+    @for (skill of skills; track $index) {
+
+      <div class="bg-blue-600 rounded-full p-4 shadow-md hover:bg-blue-700 transition duration-300">
+  
+        <img [src]="skill.img" class="w-12 h-12 mx-auto" />
+        <p class="text-xs text-white mt-2">{{skill.name}}</p>
+      </div>
+      
+    }
+
+  </div>
+</section>

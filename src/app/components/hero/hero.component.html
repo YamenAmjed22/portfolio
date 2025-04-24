@@ -1,0 +1,20 @@
+<div class="h-screen flex flex-col lg:flex-row items-center justify-center px-8 gap-10 text-center lg:text-left">
+    
+    <!-- Profile Image -->
+    <div class="group transition-transform duration-300">
+        <img src={{theImgSrc}}
+            alt="Yamen Amjed"
+            class="w-64 h-64 rounded-full shadow-2xl border-4 border-blue-500 object-cover transform transition duration-500 group-hover:scale-110 group-hover:rotate-1 group-hover:shadow-blue-500/50 group-hover:shadow-lg" />
+    </div>
+  
+    <!-- Text Content -->
+    <div>
+      <h1 class="text-5xl font-bold text-blue-400 mb-4">{{someInfo.WelcomMessge}}</h1>
+      <p class="text-xl text-gray-300 mb-6">
+        {{someInfo.mySkills}}
+      </p>
+      <a href="#projects" class="px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition">
+        {{someInfo.buttonData}}
+      </a>
+    </div>
+  </div>
