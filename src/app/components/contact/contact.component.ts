@@ -8,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class ContactComponent {
 
+  isContactVisible = false;
+
+  ngOnInit() {
+    setTimeout(() => {
+      this.isContactVisible = true;
+    }, 200); // Adjust as needed
+  }
+
 }

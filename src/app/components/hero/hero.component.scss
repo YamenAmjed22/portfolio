@@ -1,3 +1,39 @@
 img {
     transition: all .5s ease;
 }
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+
+.hover-text-black {
+    transition: all 0.3s ease;
+}
+
+.hover-text-black {
+    transition: all 0.4s ease-in-out;
+    cursor: pointer;
+}
+
+.hover-text-black {
+    letter-spacing: 0.5px;
+    transition: all 0.4s ease-in-out;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 500;
+  }
+  
+  .hover-text-black:hover {
+    color: #edeaea; /* bold funky pink */
+    transform: scale(1.08) rotate(-1deg); /* zoom in with a slight tilt */
+    text-shadow:
+      0 0 5px #816df0,
+      0 0 10px #816df0,
+      0 0 15px #816df0,
+      0 0 20px #816df0;
+  }
+  

@@ -1,20 +1,29 @@
-<div class="h-screen flex flex-col lg:flex-row items-center justify-center px-8 gap-10 text-center lg:text-left">
+<div class="h-screen flex flex-col lg:flex-row items-center justify-center px-8 gap-10 text-center lg:text-left bg-gradient-to-br from-gray-900 via-blue-900 to-black">
+
+  <!-- Profile Image -->
+  <div [class.fade-in]="isVisible" [class.fade-delay-1]="isVisible" class="group transition-transform duration-300">
+    <img src="{{ theImgSrc }}" alt="Yamen Amjed"
+      class="w-64 h-64 rounded-full shadow-2xl border-4 border-blue-500 object-cover transform transition duration-500 group-hover:scale-110 group-hover:rotate-1 group-hover:shadow-blue-500/50 group-hover:shadow-lg" />
+  </div>
+
+  <!-- Text Content -->
+  <div>
+    <h1 [class.fade-in]="isVisible" [class.fade-delay-2]="isVisible" class="text-5xl font-bold text-blue-400 mb-4 ">
+      {{ someInfo.WelcomMessge }}
+    </h1>
+
+    <p [class.fade-in]="isVisible" [class.fade-delay-3]="isVisible" class="text-xl text-gray-300 mb-6 hover-text-black">
+      {{ someInfo.mySkills }}
+    </p>
     
-    <!-- Profile Image -->
-    <div class="group transition-transform duration-300">
-        <img src={{theImgSrc}}
-            alt="Yamen Amjed"
-            class="w-64 h-64 rounded-full shadow-2xl border-4 border-blue-500 object-cover transform transition duration-500 group-hover:scale-110 group-hover:rotate-1 group-hover:shadow-blue-500/50 group-hover:shadow-lg" />
-    </div>
-  
-    <!-- Text Content -->
-    <div>
-      <h1 class="text-5xl font-bold text-blue-400 mb-4">{{someInfo.WelcomMessge}}</h1>
-      <p class="text-xl text-gray-300 mb-6">
-        {{someInfo.mySkills}}
-      </p>
+
+    <div [class.fade-in]="isVisible" [class.fade-delay-4]="isVisible" class="buttons">
       <a href="#projects" class="px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition">
-        {{someInfo.buttonData}}
+        {{ someInfo.buttonData }}
       </a>
+      <button (click)="goToPdf()" class="px-6 py-2 bg-green-600 text-white cursor-pointer rounded-full hover:bg-green-700 transition">
+        View Resume
+      </button>
     </div>
   </div>
+</div>
