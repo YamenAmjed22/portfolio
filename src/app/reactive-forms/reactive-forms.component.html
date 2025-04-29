@@ -1,0 +1,86 @@
+<div class="min-h-screen bg-gradient-to-r from-indigo-100 to-blue-100 flex items-center justify-center p-4">
+  <div class="w-full max-w-4xl bg-white shadow-2xl rounded-2xl p-10">
+    <h2 class="text-3xl font-bold text-indigo-800 mb-8 text-center">Hello Boy, This is User Reactive Form</h2>
+
+    <form (ngSubmit)="onUserSave()" [formGroup]="userForm" class="space-y-6">
+
+      <!-- Name Section -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <label for="fName" class="block text-sm font-semibold text-gray-700">First Name</label>
+          <input type="text" formControlName="fName" id="fName"
+                 class="mt-1 block w-full rounded-lg border border-gray-300 py-2 px-4 shadow-sm focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition text-black" />
+          <div class="text-red-600 text-sm mt-1" *ngIf="userForm.controls['fName'].errors?.['required'] && userForm.controls['fName'].touched">
+            First name is required.
+          </div>
+        </div>
+
+        <div>
+          <label for="lName" class="block text-sm font-semibold text-gray-700">Last Name</label>
+          <input type="text" formControlName="lName" id="lName"
+                 class="mt-1 block w-full rounded-lg border border-gray-300 py-2 px-4 shadow-sm focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition text-black " />
+          <div class="text-red-600 text-sm mt-1" *ngIf="userForm.controls['lName'].touched">
+            <span *ngIf="userForm.controls['lName'].errors?.['required']">Last name is required.</span>
+            <span *ngIf="userForm.controls['lName'].errors?.['minlength']">Minimum 5 characters.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Email Section -->
+      <div>
+        <label for="userName" class="block text-sm font-semibold text-gray-700">Email</label>
+        <div class="relative mt-1">
+          <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500">&#64;</span>
+          <input type="text" formControlName="userName" id="userName"
+                 class="pl-8 block w-full rounded-lg border border-gray-300 py-2 px-4 shadow-sm focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition text-black" />
+        </div>
+        <div class="text-red-600 text-sm mt" *ngIf="userForm.controls['userName'].errors?.['email'] && userForm.controls['userName'].touched">
+          Must be a valid email address.
+        </div>
+      </div>
+
+      <!-- Location Section -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div>
+          <label for="city" class="block text-sm font-semibold text-gray-700">City</label>
+          <input type="text" formControlName="city" id="city"
+                 class="mt-1 block w-full rounded-lg border border-gray-300 py-2 px-4 shadow-sm focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition  text-black" />
+        </div>
+
+        <div>
+          <label for="state" class="block text-sm font-semibold text-gray-700">State</label>
+          <select formControlName="state" id="state"
+                  class="mt-1 block w-full rounded-lg border border-gray-300 py-2 px-4 shadow-sm focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition text-black">
+            <option selected disabled value="">Choose...</option>
+            <option value="Amman">Amman</option>
+            <option value="Irbid">Irbid</option>
+            <option value="Jerash">Jerash</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="zip" class="block text-sm font-semibold text-gray-700">Zip Code</label>
+          <input type="text" formControlName="zip" id="zip"
+                 class="mt-1 block w-full rounded-lg border border-gray-300 py-2 px-4 shadow-sm focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition text-black" />
+        </div>
+      </div>
+
+      <!-- Checkbox -->
+      <div class="flex items-center space-x-3">
+        <input type="checkbox" formControlName="isAgree" id="isAgree"
+               class="h-5 w-5 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500" />
+        <label for="isAgree" class="text-sm text-gray-700">Agree to terms and conditions</label>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="text-center">
+        <button type="submit"
+                [disabled]="userForm.invalid"
+                class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 disabled:opacity-50">
+          Submit Form
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>

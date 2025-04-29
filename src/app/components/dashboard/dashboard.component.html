@@ -1,0 +1,54 @@
+<div class="container mx-auto p-8">
+    <!-- Header Section -->
+    <div class="text-center mb-12">
+      <h2 class="text-5xl font-extrabold text-indigo-900">Contact Us</h2>
+      <p class="text-gray-600 text-lg">View all the messages from your users. Stay connected!</p>
+    </div>
+  
+    <!-- Fetch Contacts Button -->
+    <div class="text-center mb-12">
+      <button 
+        nButton 
+        [loading]="isLoading" 
+        (click)="getAllContacts()" 
+        label="Get Contacts"
+        class="bg-indigo-600 text-white py-4 px-10 rounded-full shadow-lg hover:bg-indigo-700 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-indigo-300 transition-all duration-300 transform hover:scale-105"
+      >
+        <span *ngIf="isLoading" class="animate-spin inline-block w-6 h-6 border-4 border-t-4 border-indigo-600 rounded-full"></span>
+        <span *ngIf="!isLoading">Get Contacts</span>
+      </button>
+    </div>
+  
+    <!-- Display Contacts in a Stylish Grid -->
+    <div *ngIf="contacts.length > 0" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+      <div *ngFor="let contact of contacts" class="bg-white relative shadow-xl rounded-xl p-8 space-y-4 hover:bg-gray-50 transition-all transform hover:scale-105 hover:shadow-2xl cursor-pointer">
+        <div class="text-indigo-700 font-bold text-2xl tracking-wide">{{ contact.fullName }}</div>
+        <div class="text-gray-600 font-semibold text-lg">{{ contact.email }}</div>
+        <div class="text-gray-500 text-md">{{ contact.message }}</div>
+
+        <div class="delete-btn">
+            <button nButton icon="pi pi-trash" severity="error" (click)="onButtomDeleteClicked(contact)"></button>
+        </div>
+
+        <div class="update-btn">
+            <button nButton icon="pi pi-pencil" severity="info">
+            </button>
+        
+        </div>
+
+      </div>
+    </div>
+
+    
+  
+    <!-- No Contacts Available Message -->
+    <div *ngIf="contacts.length === 0" class="text-center text-gray-600 mt-8">
+      <p class="text-xl font-medium">No contacts available at the moment.</p>
+    </div>
+  
+    <!-- Loading/Error State -->
+    <div *ngIf="isLoading" class="text-center text-gray-600 mt-8">
+      <p class="text-lg font-medium">Loading contacts...</p>
+    </div>
+  </div>
+  

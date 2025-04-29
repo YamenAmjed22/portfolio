@@ -1,27 +1,29 @@
-<div class="h-screen flex flex-col lg:flex-row items-center justify-center px-8 gap-10 text-center lg:text-left bg-gradient-to-br from-gray-900 via-blue-900 to-black">
+<div class="h-screen flex flex-col lg:flex-row items-center justify-center px-8 gap-16 text-center lg:text-left bg-gradient-to-br from-gray-950 via-blue-950 to-black">
 
   <!-- Profile Image -->
-  <div [class.fade-in]="isVisible" [class.fade-delay-1]="isVisible" class="group transition-transform duration-300">
-    <img src="{{ theImgSrc }}" alt="Yamen Amjed"
-      class="w-64 h-64 rounded-full shadow-2xl border-4 border-blue-500 object-cover transform transition duration-500 group-hover:scale-110 group-hover:rotate-1 group-hover:shadow-blue-500/50 group-hover:shadow-lg" />
+  <div [class.fade-in]="isVisible" [class.fade-delay-1]="isVisible" class="group transition-transform duration-500">
+    <div class="relative w-64 h-64">
+      <img src="{{ theImgSrc }}" alt="Yamen Amjed"
+        class="rounded-full w-full h-full object-cover border-4 border-blue-500 shadow-lg group-hover:scale-105 group-hover:rotate-1 transition-all duration-500" />
+      <div class="absolute inset-0 rounded-full border-4 border-blue-500 opacity-30 group-hover:opacity-70 animate-pulse"></div>
+    </div>
   </div>
 
   <!-- Text Content -->
-  <div>
-    <h1 [class.fade-in]="isVisible" [class.fade-delay-2]="isVisible" class="text-5xl font-bold text-blue-400 mb-4 ">
+  <div class="max-w-lg">
+    <h1 [class.fade-in]="isVisible" [class.fade-delay-2]="isVisible" class="text-5xl font-bold text-blue-400 mb-6 tracking-wide">
       {{ someInfo.WelcomMessge }}
     </h1>
 
-    <p [class.fade-in]="isVisible" [class.fade-delay-3]="isVisible" class="text-xl text-gray-300 mb-6 hover-text-black">
+    <p [class.fade-in]="isVisible" [class.fade-delay-3]="isVisible" class="text-xl text-gray-400 mb-8 leading-relaxed">
       {{ someInfo.mySkills }}
     </p>
-    
 
-    <div [class.fade-in]="isVisible" [class.fade-delay-4]="isVisible" class="buttons">
-      <a href="#projects" class="px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition">
+    <div [class.fade-in]="isVisible" [class.fade-delay-4]="isVisible" class="flex flex-col sm:flex-row items-center gap-4">
+      <a href="#projects" class="px-8 py-3 bg-blue-600 hover:bg-blue-700 rounded-full text-white font-semibold shadow-md hover:shadow-blue-500/50 transition">
         {{ someInfo.buttonData }}
       </a>
-      <button (click)="goToPdf()" class="px-6 py-2 bg-green-600 text-white cursor-pointer rounded-full hover:bg-green-700 transition">
+      <button (click)="goToPdf()" class="px-8 py-3 bg-green-600 hover:bg-green-700 rounded-full text-white font-semibold shadow-md hover:shadow-green-500/50 transition">
         View Resume
       </button>
     </div>
