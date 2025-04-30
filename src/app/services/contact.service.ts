@@ -22,4 +22,8 @@ export class ContactService {
   deleteContactById(deletedId:any){
     return this.http.delete(this.apiUrl+ "/" + `${deletedId}`) ;
   }
+  updateContactById(updatedId:any , updatedBody:any){
+    return this.http.patch(this.apiUrl+ "/" + `${updatedId}`, updatedBody) ;
+  }
+  
 }

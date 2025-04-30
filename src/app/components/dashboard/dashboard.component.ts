@@ -2,6 +2,7 @@
   import { Component } from '@angular/core';
   import { ContactService } from '../../services/contact.service';
   import { ButtonModule, ConfirmationDialogService, NotificationService } from 'nzrm-ng';
+import { ReactiveFormsComponent } from "../../reactive-forms/reactive-forms.component";
 
   interface ContactResponse {
     id: string,
@@ -14,15 +15,19 @@
   @Component({
     selector: 'app-dashboard',
     imports: [
-      CommonModule,
-      ButtonModule
-    ],
+    CommonModule,
+    ButtonModule,
+    ReactiveFormsComponent
+],
     templateUrl: './dashboard.component.html',
     styleUrls: ['./dashboard.component.scss']
   })
   export class DashboardComponent {
     contacts: any[] = [];
     isLoading: boolean = false;
+
+    selectedContant :any = null; 
+    showForm : boolean = false;
 
     constructor(
       private contactsService: ContactService,
@@ -83,5 +88,19 @@
           return
         }
       })
+
+    }
+
+    onCardClick(contact:any){
+      console.log("Triggered selected: ", contact);
+      
+      this.selectedContant = contact;
+      this.showForm = true;
+    }
+    
+    updatedContact(){
+      this.showForm = false;
+      this.getAllContacts();
+      this.selectedContant = null; 
     }
   }

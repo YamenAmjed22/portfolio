@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { zip } from 'rxjs';
+import { ButtonModule } from 'nzrm-ng';
+import { ContactService } from '../services/contact.service';
 
 
 // i make import to form control 
@@ -11,40 +12,60 @@ import { zip } from 'rxjs';
 // we add ngSubmit (when clicl on submit will make function )
 @Component({
   selector: 'app-reactive-forms',
-  imports: [ReactiveFormsModule , CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, ButtonModule],
   templateUrl: './reactive-forms.component.html',
   styleUrl: './reactive-forms.component.scss'
 })
-export class ReactiveFormsComponent {
+export class ReactiveFormsComponent implements OnChanges {
 
-    userForm : FormGroup = new FormGroup ({
-        fName : new FormControl("",[Validators.required]),
-        lName : new FormControl ("" , [Validators.required , Validators.minLength(5)] ),
-        userName : new FormControl("", [Validators.email]),
-        city : new FormControl(""), 
-        state : new FormControl("Amman"),
-        zip : new FormControl(""),
-        isAgree : new FormControl(false)
-    })
+  @Input() contact: any = null; // Data passed from parent
 
+  @Output() updatedContact = new EventEmitter<void>();
 
-    // control flow 
-    constructor (){
-      this.userForm.controls['state'].disable(); 
-      
-      setTimeout(() => {
-      this.userForm.controls['state'].enable(); 
-      }, 5000);
+  contactForm: FormGroup = new FormGroup({
+    id: new FormControl(''),
+    fullName: new FormControl('', Validators.required),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    message: new FormControl('', Validators.required)
+  })
+
+  oldContact: any;
+  
+  // control flow c
+  constructor(
+    private contactService:ContactService
+  ) {
+
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if(changes['contact']) {
+      this.oldContact = this.contact;
+      this.contactForm.patchValue({
+        id: this.contact.id,
+        fullName: this.contact.fullName,
+        email: this.contact.email,
+        message: this.contact.message
+      });
     }
+  }
 
+  isValid() {
+    return JSON.stringify( this.oldContact) !== JSON.stringify(this.contactForm.value);
+  }
 
-    onUserSave() {
-      if (this.userForm.invalid) {
-        this.userForm.markAllAsTouched(); // Show all validation messages
-        return;
+  onUserSave() {
+    console.log(this.contactForm.value);
+    this.contactService.updateContactById(this.contactForm.value.id,this.contactForm.value).subscribe({
+      next: (res:any) => {
+        
+      this.updatedContact.emit()
+      }, error: (error) => {
+        console.error("somthing wrong hapend " , error);
+        
       }
-      console.log(this.userForm.value);
-    }
-    
+    })
+  }
+
 
 }

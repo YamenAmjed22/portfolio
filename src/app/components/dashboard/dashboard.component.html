@@ -22,24 +22,33 @@
     <!-- Display Contacts in a Stylish Grid -->
     <div *ngIf="contacts.length > 0" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
       <div *ngFor="let contact of contacts" class="bg-white relative shadow-xl rounded-xl p-8 space-y-4 hover:bg-gray-50 transition-all transform hover:scale-105 hover:shadow-2xl cursor-pointer">
-        <div class="text-indigo-700 font-bold text-2xl tracking-wide">{{ contact.fullName }}</div>
-        <div class="text-gray-600 font-semibold text-lg">{{ contact.email }}</div>
-        <div class="text-gray-500 text-md">{{ contact.message }}</div>
+  <div class="text-indigo-700 font-bold text-2xl tracking-wide">{{ contact.fullName }}</div>
+  <div class="text-gray-600 font-semibold text-lg">{{ contact.email }}</div>
+  <div class="text-gray-500 text-md">{{ contact.message }}</div>
 
-        <div class="delete-btn">
-            <button nButton icon="pi pi-trash" severity="error" (click)="onButtomDeleteClicked(contact)"></button>
-        </div>
+  <!-- Button Container -->
+  <div class="flex justify-end space-x-4 pt-4">
+    <!-- Delete Button -->
+    <button 
+      nButton 
+      icon="pi pi-trash" 
+      severity="error" 
+      (click)="onButtomDeleteClicked(contact)"
+      class="bg-red-600 hover:bg-red-700 text-white p-2 rounded-full shadow transition"
+    ></button>
 
-        <div class="update-btn">
-            <button nButton icon="pi pi-pencil" severity="info">
-            </button>
-        
-        </div>
+    <!-- Update Button -->
+    <button 
+      nButton 
+      icon="pi pi-pencil" 
+      severity="info" 
+      (click)="onCardClick(contact)"
+      class="bg-blue-600 hover:bg-blue-700 text-white p-2 rounded-full shadow transition"
+    ></button>
+  </div>
+</div>
 
-      </div>
     </div>
-
-    
   
     <!-- No Contacts Available Message -->
     <div *ngIf="contacts.length === 0" class="text-center text-gray-600 mt-8">
@@ -50,5 +59,13 @@
     <div *ngIf="isLoading" class="text-center text-gray-600 mt-8">
       <p class="text-lg font-medium">Loading contacts...</p>
     </div>
+
+
+    <div *ngIf="showForm" class="mt-12 mb-12">
+      <app-reactive-forms
+        (updatedContact)="updatedContact()"
+        [contact]="selectedContant"></app-reactive-forms>
+    </div>
+    
   </div>
   
