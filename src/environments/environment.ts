@@ -6,7 +6,7 @@ const protocol = window.location.protocol;
 const hostname = window.location.hostname;
 let port = '';
 
-if (port != null) {
+if (window.location.port != null) {
     port = ':' + window.location.port;
 }
 
