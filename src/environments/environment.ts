@@ -4,8 +4,13 @@
 
 const protocol = window.location.protocol;
 const hostname = window.location.hostname;
-const port = window.location.port || '8080'; // fallback if port not provided
+let port;
+
+if (port != null) {
+    port = ':' + window.location.port;
+}
+
 
 export const environment = {
-  apiUrl: `${protocol}//${hostname}:${port}/api`
+  apiUrl: `${protocol}//${hostname}${port}/api`
 };
