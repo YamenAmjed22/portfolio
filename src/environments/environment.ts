@@ -4,9 +4,9 @@
 
 const protocol = window.location.protocol;
 const hostname = window.location.hostname;
-let port = '';
 
-if (window.location.port != null) {
+let port = '';
+if (window.location.port != '') {
     port = ':' + window.location.port;
 }
 
