@@ -1,10 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router'; // ✅ Add this
 
 @Component({
   selector: 'app-hero',
   imports: [
     CommonModule,
+    RouterModule
   ],
   templateUrl: './hero.component.html',
   styleUrl: './hero.component.scss'

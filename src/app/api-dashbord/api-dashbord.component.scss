@@ -1,0 +1,189 @@
+/* === Global Styles === */
+html, body {
+  min-height: 100%;
+  margin: 0;
+  background-color: #f0f2f5;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* === Layout === */
+.center-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+/* === Dashboard === */
+.dashboard-container {
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 30px;
+  width: 90%;
+  max-width: 1000px;
+  margin-bottom: 25px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+  transition: 0.3s;
+}
+
+.dashboard-container h2 {
+  text-align: center;
+  font-size: 32px;
+  color: #333;
+  margin-bottom: 25px;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 10px;
+}
+
+/* === Table === */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+table th, table td {
+  padding: 16px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+  color: #333;
+}
+
+table th {
+  background-color: #4b0082;
+  color: #fff;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+table tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+table tr:hover {
+  background-color: #f0e8ff;
+  transform: scale(1.01);
+  transition: all 0.2s ease-in-out;
+}
+
+.method {
+  font-weight: bold;
+}
+
+/* === Form === */
+.form-container {
+  width: 90%;
+  max-width: 1000px;
+  background-color: #fdfdfe;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+/* Scrollbar Styling */
+.form-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.form-container::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
+
+.form-container::-webkit-scrollbar-thumb {
+  background-color: #4b0082;
+  border-radius: 10px;
+}
+
+/* Form Inputs */
+form label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #333;
+}
+
+form input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+form input:focus {
+  border-color: #4b0082;
+  outline: none;
+  box-shadow: 0 0 5px rgba(75, 0, 130, 0.3);
+}
+
+/* Submit Button */
+form button[type="submit"] {
+  background-color: #4b0082;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+form button[type="submit"]:hover {
+  background-color: #3e22c5;
+}
+
+/* === Add Button === */
+.btn-add {
+  margin-bottom: 20px;
+  padding: 12px 20px;
+  background-color: #4b0082;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.btn-add:hover {
+  background-color: #3e22c5;
+}
+
+/* === Action Buttons (Edit/Delete) === */
+.btn-action {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.btn-action.delete {
+  color: #fff;
+  background-color: #e74c3c;
+}
+
+.btn-action.delete:hover {
+  background-color: #c0392b;
+}
+
+/* === No Data === */
+.no-data {
+  text-align: center;
+  color: #333;
+  background-color: #fff3cd;
+  padding: 25px;
+  border: 1px solid #ffeeba;
+  border-radius: 10px;
+  margin-top: 20px;
+}

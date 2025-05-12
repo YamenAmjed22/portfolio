@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<!-- Dashboard Container -->
+<div class="center-wrapper">
+  <div class="dashboard-container">
+    <h2>API Endpoints Dashboard</h2>
+
+    <!-- Add Button -->
+    <button (click)="toggleForm()" class="btn-add">
+      {{ showForm ? 'Close Form' : 'Add New API' }}
+    </button>
+
+    <!-- API Table -->
+    <div *ngIf="apiDetails.length > 0; else noData"
+      style="max-height: 400px; overflow-y: auto; border: 1px solid #ccc;">
+      <table>
+        <thead>
+          <tr>
+            <th>API Name</th>
+            <th>URL</th>
+            <th>Description</th>
+            <th>Method</th>
+            <th>Delete Action</th>
+            <th>Edite Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let api of apiDetails">
+            <td>{{ api.apiName }}</td>
+            <td>{{ api.url }}</td>
+            <td>{{ api.description }}</td>
+            <td class="method" style="color: rgb(255, 106, 0); font-weight: bold;">{{ api.methodeName }}</td>
+            <td>
+              <button nButton icon="pi pi-trash" severity="error"
+                class="bg-red-600 hover:bg-red-700 text-white p-2 rounded-full shadow transition"
+                (click)="onButtomDeleteClicked(api.id)" style="color: rgb(255, 255, 255);  font-weight: bold;">Delete</button>
+            </td>
+            <td>
+              <button nButton icon="pi pi-pencil" severity="info" (click)="onEditeButtonClicked(api)"
+                class="bg-blue-600 hover:bg-blue-700 text-white p-2 rounded-full shadow transition" style="font-weight: bold;">Edite</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+    <!-- No Data Template -->
+    <ng-template #noData>
+      <div class="no-data">
+        <p>No API details available.</p>
+      </div>
+    </ng-template>
+  </div>
+
+  <!-- API Form Container -->
+  <div *ngIf="showForm" class="form-container">
+    <form (ngSubmit)="addNewApi()">
+      <label style="color: black;">API Name:</label>
+      <input style="color: black;" type="text" [(ngModel)]="newApi.apiName" name="apiName" required />
+
+      <label style="color: black;">URL:</label>
+      <input style="color: black;" type="text" [(ngModel)]="newApi.url" name="url" required />
+
+      <label style="color: black;">Description:</label>
+      <input style="color: black;" type="text" [(ngModel)]="newApi.description" name="description" required />
+
+      <label style="color: black;">Method:</label>
+      <input style="color: black;" type="text" [(ngModel)]="newApi.methodeName" name="methodeName" required />
+
+      <button type="submit">Save</button>
+    </form>
+  </div>
+</div>

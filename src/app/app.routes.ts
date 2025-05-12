@@ -2,11 +2,13 @@ import { Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
+import { APIDashbordComponent } from './api-dashbord/api-dashbord.component';
+import { LoginComponent } from './login/login.component';
 
 export const routes: Routes = [
     {
         path: '',
-        redirectTo: 'home',
+        redirectTo: 'login',
         pathMatch: 'full'
     },
     {
@@ -18,8 +20,18 @@ export const routes: Routes = [
         component: DashboardComponent
     },
     {
-        path:"form",
-        component:ReactiveFormsComponent
+        path: "form",
+        component: ReactiveFormsComponent
+    },
+    {
+        path: "apidashbord",
+        component: APIDashbordComponent
+    },
+    {
+        path: "login",
+        component: LoginComponent
     }
-    
+
+
+
 ];
