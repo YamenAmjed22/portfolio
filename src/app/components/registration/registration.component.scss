@@ -1,13 +1,19 @@
-.login-wrapper {
+/* Full-screen gradient background */
+.registration-wrapper {
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background: linear-gradient(to right, #0f2027, #203a43, #2c5364); /* dark gradient */
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  padding-top: 100px; /* space below navbar */
+  padding-bottom: 100px; /* space above footer */
 }
 
-.login-form {
-  background: rgba(28, 28, 40, 0.95); /* dark semi-transparent background */
+
+
+/* Form container */
+.registration-form {
+  background: rgba(28, 28, 40, 0.95);
   padding: 40px 30px;
   border-radius: 12px;
   box-shadow: 0 0 20px rgba(0, 255, 255, 0.15);
@@ -17,19 +23,23 @@
   border: 1px solid #00ffff33;
 }
 
-.login-form h2 {
+/* Form title */
+.registration-form h2 {
   margin-bottom: 20px;
-  color: #00ffff; /* neon cyan */
+  color: #00ffff;
   font-weight: bold;
   font-size: 1.5rem;
   text-shadow: 0 0 5px #00ffff66;
 }
 
-.form-control {
+/* Form group layout */
+.form-group {
   margin-bottom: 20px;
+  text-align: left;
 }
 
-.form-control input {
+/* Input fields */
+.registration-form input {
   width: 100%;
   padding: 12px 15px;
   font-size: 16px;
@@ -40,12 +50,22 @@
   transition: 0.3s border-color ease, 0.3s box-shadow ease;
 }
 
-.form-control input:focus {
+.registration-form input:focus {
   border-color: #00ffff;
   box-shadow: 0 0 5px #00ffff88;
   outline: none;
 }
 
+/* Labels */
+.registration-form label {
+  color: #ccc;
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 5px;
+  display: block;
+}
+
+/* Submit Button */
 button[type="submit"] {
   width: 100%;
   padding: 12px;
@@ -57,6 +77,7 @@ button[type="submit"] {
   border-radius: 10px;
   cursor: pointer;
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  margin-top: 15px;
 }
 
 button[type="submit"]:hover {
@@ -64,15 +85,16 @@ button[type="submit"]:hover {
   box-shadow: 0 0 10px #00ffff;
 }
 
-.error-message {
-  margin-top: 15px;
-  color: #ff6b6b; /* soft neon red */
+/* Validation Error */
+.error {
+  color: #ff6b6b;
   font-weight: 600;
+  font-size: 13px;
+  margin-top: 5px;
   text-shadow: 0 0 5px rgba(255, 107, 107, 0.3);
 }
 
-
-// for welcome message 
+// this is for welcome message 
 .welcome-message {
   font-size: 1.1rem;
   line-height: 1.8;
@@ -91,10 +113,11 @@ button[type="submit"]:hover {
 }
 
 .welcome-message em {
-  color: #ff0000ed;
+  color: #aaaaff;
   font-style: italic;
 }
 
+/* Optional animation */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -105,4 +128,3 @@ button[type="submit"]:hover {
     transform: translateY(0);
   }
 }
-

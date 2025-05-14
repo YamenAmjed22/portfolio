@@ -3,10 +3,11 @@ import { loginService } from '../services/login.serive';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { HeaderComponent } from "../components/header/header.component";
 
 @Component({
   selector: 'app-login',
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, HeaderComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ButtonModule, NotificationService } from 'nzrm-ng';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -12,10 +13,20 @@ import { ButtonModule, NotificationService } from 'nzrm-ng';
 export class HeaderComponent {
 
   constructor(
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private router:Router
   ) {}
 
   onButtonClick() {
-    this.notificationService.info('Info', 'Welcome to my portfolio!', 10000)
+    this.notificationService.info('Info', '🌟 From Rever To The Sea 🌟', 10000)
+  }
+
+    goToRegistration() {
+    this.router.navigate(['/registration']); // Adjust if your route is named differentl
+  }
+
+  goToLogin(){
+    this.router.navigate(['/login']); // Adjust if your route is named differentl
+
   }
 }

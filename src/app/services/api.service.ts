@@ -17,21 +17,17 @@ export class apiService {
 
   
   getApiInfo() {
-    alert(this.apiUrl);
     return this.http.get(this.apiUrl);
   }
   
   addNewApi(newApi : any){
-    alert(this.apiUrl);
     return this.http.post(this.apiUrl,newApi);
 
   }
   deleteTheAPI(id:any){
-    alert(this.apiUrl)
     return this.http.delete(this.apiUrl + "/" +`${id}`);
   }
   updateTheAPI(id:any,updateTheAPI:any){
-    alert(this.apiUrl);
     return this.http.patch(this.apiUrl + "/" +`${id}`,updateTheAPI);
   }
   

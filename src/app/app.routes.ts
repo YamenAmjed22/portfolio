@@ -4,11 +4,12 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
 import { APIDashbordComponent } from './api-dashbord/api-dashbord.component';
 import { LoginComponent } from './login/login.component';
+import { RegistrationComponent } from './components/registration/registration.component';
 
 export const routes: Routes = [
     {
         path: '',
-        redirectTo: 'login',
+        redirectTo: 'registration',
         pathMatch: 'full'
     },
     {
@@ -30,6 +31,10 @@ export const routes: Routes = [
     {
         path: "login",
         component: LoginComponent
+    },
+    {
+        path:"registration",
+        component:RegistrationComponent
     }
 
 

@@ -8,7 +8,7 @@ import { environment } from '../../environments/environment';
 })
 export class loginService {
 
-
+    
 
     apiUrl: string = `${environment.apiUrl}`
     constructor(
@@ -18,8 +18,11 @@ export class loginService {
 
 
     login(userName:any,password:any) {
-        alert(this.apiUrl);
         return this.http.post(this.apiUrl +"/auth/login" , {userName,password});
+    }
+    
+    registration(userDate:any){
+        return this.http.post(this.apiUrl+"/"+"registration",userDate)
     }
 
 }

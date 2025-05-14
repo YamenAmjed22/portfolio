@@ -1,0 +1,82 @@
+<app-header> </app-header>
+<div class="registration-wrapper">
+
+    <div class="registration-form">
+        <div class="form-container">
+            <div class="registration-form">
+                <h2>Register</h2>
+                <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+
+                    <div class="form-group">
+                        <label for="userName">Username</label>
+                        <input id="userName" type="text" formControlName="userName" />
+                        <div *ngIf="userName?.invalid && userName?.touched" class="error">
+                            Username is required.
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input id="password" type="password" formControlName="password" />
+                        <div *ngIf="password?.invalid && password?.touched" class="error">
+                            Password is required (min 6 characters).
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input id="firstName" type="text" formControlName="firstName" />
+                        <div *ngIf="firstName?.invalid && firstName?.touched" class="error">
+                            First name is required.
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input id="lastName" type="text" formControlName="lastName" />
+                        <div *ngIf="lastName?.invalid && lastName?.touched" class="error">
+                            Last name is required.
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input id="email" type="email" formControlName="email" />
+                        <div *ngIf="email?.invalid && email?.touched" class="error">
+                            Valid email is required.
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <input id="address" type="text" formControlName="address" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input id="phone" type="text" formControlName="phone" />
+                        <div *ngIf="phone?.invalid && phone?.touched" class="error">
+                            Phone number is invalid (should be 10 digits).
+                        </div>
+                    </div>
+
+                    <button type="submit" [disabled]="registrationForm.invalid">Register</button>
+                    <div>
+                        <button type="submit" (click)="goToLogin()" id="goToLogin">Go To Login</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+    <p class="welcome-message">
+        Hello, my friend! My name is <span class="highlight">Yamen Amjed</span>.<br />
+        I’m a <span class="highlight">Software Engineer</span>, and I built this site as a simple project to share who I
+        am with the world.<br /><br />
+        <span class="highlight">Welcome to my page!</span><br />
+        If you don’t have an account yet, you can create one using the registration form.<br />
+        <em>" Enjoy your stay 🌟 "</em>
+    </p>
+
+
+</div>

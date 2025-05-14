@@ -20,7 +20,6 @@ export class ContactService {
   }
 
   getContacts() {
-    alert(this.apiUrl);
     return this.http.get(this.apiUrl);
   }
   deleteContactById(deletedId:any){
