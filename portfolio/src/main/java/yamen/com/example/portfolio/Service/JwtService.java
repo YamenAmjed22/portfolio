@@ -22,7 +22,7 @@ public class JwtService {
     private String secretKey;
 
     @Value("${security.jwt.expiration-time}")
-    private long jwtExpiration;
+    private String jwtExpirationRaw;
 
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
@@ -38,7 +38,7 @@ public class JwtService {
     }
 
     public String generateToken(Map<String, Object> extraClaims, UserDetails userDetails) {
-        return buildToken(extraClaims, userDetails, jwtExpiration);
+        return buildToken(extraClaims, userDetails, parseExpirationToMillis(jwtExpirationRaw));
     }
 
 //    Map<String, Object> claims = new HashMap<>();
@@ -46,7 +46,7 @@ public class JwtService {
 //    claims.put("userId", 123);
 
     public long getExpirationTime() {
-        return jwtExpiration;
+        return parseExpirationToMillis(jwtExpirationRaw);
     }
 
     private String buildToken(
@@ -84,6 +84,15 @@ public class JwtService {
                 .build()
                 .parseClaimsJws(token)
                 .getBody();
+    }
+
+    private long parseExpirationToMillis(String value) {
+        if (value.endsWith("ms")) return Long.parseLong(value.replace("ms", ""));
+        if (value.endsWith("s")) return Long.parseLong(value.replace("s", "")) * 1000;
+        if (value.endsWith("m")) return Long.parseLong(value.replace("m", "")) * 60 * 1000;
+        if (value.endsWith("h")) return Long.parseLong(value.replace("h", "")) * 60 * 60 * 1000;
+        if (value.endsWith("d")) return Long.parseLong(value.replace("d", "")) * 24 * 60 * 60 * 1000;
+        return Long.parseLong(value); // default fallback to milliseconds
     }
 
     private Key getSignInKey() {
