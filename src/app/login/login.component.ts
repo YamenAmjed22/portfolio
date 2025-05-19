@@ -21,9 +21,19 @@ export class LoginComponent {
   onSubmit() {
     this.loginService.login(this.userName, this.password).pipe().subscribe({
       next: async (res: any) => {
-        this.router.navigate(['/home']); // Adjust if your route is named differentl
+        if (res && res.token) {
+          console.log("Token is:", res.token);
+          localStorage.setItem('token', res.token);
+          this.router.navigate(['/home']); // Or your target route
+          console.log("Successfull");
 
-        console.log("Successfull");
+        } else {
+          console.error('Login failed: No token received.');
+          // Optionally show an error message to the user
+        }
+        // localStorage.setItem('token', res.token);
+        // this.router.navigate(['/home']); // Adjust if your route is named differentl
+
 
       }, error: (error) => {
         console.error("Error fetching", error);
@@ -32,6 +42,11 @@ export class LoginComponent {
 
       }
     })
+  }
+
+  goToPalestineHistory() {
+    this.router.navigate(['/palestine']); // Adjust if your route is named differentl
+
   }
 
 }

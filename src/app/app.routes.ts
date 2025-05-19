@@ -5,6 +5,8 @@ import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.componen
 import { APIDashbordComponent } from './api-dashbord/api-dashbord.component';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
+import { PalestineHistoryComponent } from './palestine-history/palestine-history.component'; 
+import { OTPComponent } from './otp/otp.component'; 
 
 export const routes: Routes = [
     {
@@ -35,8 +37,14 @@ export const routes: Routes = [
     {
         path:"registration",
         component:RegistrationComponent
+    },
+    {
+        path:"palestine",
+        component:PalestineHistoryComponent
+    },
+    {
+        path:"otp",
+        component:OTPComponent
     }
-
-
 
 ];

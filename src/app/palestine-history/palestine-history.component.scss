@@ -1,0 +1,112 @@
+/* Background Texture */
+body {
+  background-image: url('https://www.transparenttextures.com/patterns/paper-5.png');
+  background-size: cover;
+  background-repeat: repeat;
+  background-color: #0f0f0f; /* Dark background for text contrast */
+}
+
+/* General Layout and Text Style */
+h1, h2, h3, h4 {
+  font-family: 'Georgia', serif;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+
+h1 {
+  color: #90ee90; /* Light green */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+h2 {
+  color: #a8c8a1; /* Slightly muted green for subheadings */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+/* Container with Border and Shadow */
+.max-w-4xl {
+  background-color: #1a1a1a; /* Dark background for the container */
+  border: 1px solid #4f6b4e; /* Aged green border for a vintage feel */
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  padding: 30px;
+}
+
+/* Card/Box Shadow */
+img {
+  border: 2px solid #4f6b4e; /* Matching border color for images */
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.6);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.7);
+}
+
+/* Text Colors and Spacing */
+.text-gray-200 {
+  color: #dcdcdc; /* Softer text color for contrast */
+}
+
+.text-gray-300 {
+  color: #b5b5b5; /* Lighter gray for secondary text */
+}
+
+.text-green-400 {
+  color: #90ee90; /* Light green for headings */
+}
+
+.text-gray-100 {
+  color: #f0f0f0; /* For general text on dark background */
+}
+
+/* Blockquote Style */
+blockquote {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-left: 5px solid #4f6b4e;
+  padding-left: 20px;
+  margin-top: 20px;
+  font-style: italic;
+  color: #c0c0c0;
+  border-radius: 5px;
+}
+
+/* Links and Interactive Elements */
+a {
+  color: #90ee90;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #6cbf6d;
+}
+
+/* Section Margins and Padding */
+.mb-4 {
+  margin-bottom: 1.5rem;
+}
+
+.mb-6 {
+  margin-bottom: 2rem;
+}
+
+.mt-6 {
+  margin-top: 1.5rem;
+}
+
+.mt-12 {
+  margin-top: 3rem;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+  .max-w-4xl {
+    padding: 15px;
+  }
+  .text-lg {
+    font-size: 1rem;
+  }
+}

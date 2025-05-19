@@ -25,4 +25,6 @@ export class loginService {
         return this.http.post(this.apiUrl+"/"+"registration",userDate)
     }
 
+
+
 }

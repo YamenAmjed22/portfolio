@@ -9,21 +9,22 @@ import { HeaderComponent } from '../header/header.component';
 
 
 
+
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.scss'],
-  imports: [ReactiveFormsModule, CommonModule,HeaderComponent]
+  imports: [ReactiveFormsModule, CommonModule, HeaderComponent]
 })
 export class RegistrationComponent implements OnInit {
 
   registrationForm: FormGroup;
 
   constructor(
-    private fb: FormBuilder, 
+    private fb: FormBuilder,
     private loginSeervice: loginService,
     private _notificationService: NotificationService,
-    private _router:Router
+    private _router: Router
   ) {
     this.registrationForm = this.fb.group({
       userName: ['', Validators.required],
@@ -70,10 +71,16 @@ export class RegistrationComponent implements OnInit {
   onSubmit(): void {
     if (this.registrationForm.valid) {
       console.log("Form to submit: ", this.registrationForm.value);
-      
+
       this.loginSeervice.registration(this.registrationForm.value).subscribe({
         next: (response) => {
           console.log('User registered successfully!', response);
+          
+          const userEmail = this.registrationForm.value.email;
+          localStorage.setItem('userEmail', userEmail);
+
+          this._notificationService.success("Registered", "Thank You For Registration I will Send Email To you As A welcome Message ")
+          this._router.navigate(['/otp']);
           // Optionally reset form or navigate
         },
         error: (error) => {
@@ -86,7 +93,7 @@ export class RegistrationComponent implements OnInit {
     }
   }
 
-    goToLogin() {
+  goToLogin() {
     this._router.navigate(['/login']); // Adjust if your route is named differentl
   }
 
