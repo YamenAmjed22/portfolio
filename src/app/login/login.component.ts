@@ -24,6 +24,7 @@ export class LoginComponent {
         if (res && res.token) {
           console.log("Token is:", res.token);
           localStorage.setItem('token', res.token);
+          localStorage.setItem('email',res.email);
           this.router.navigate(['/home']); // Or your target route
           console.log("Successfull");
 

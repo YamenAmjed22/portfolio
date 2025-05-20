@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { PalestineHistoryComponent } from './palestine-history/palestine-history.component'; 
 import { OTPComponent } from './otp/otp.component'; 
+import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
     {
@@ -20,15 +21,18 @@ export const routes: Routes = [
     },
     {
         path: 'dashboard',
-        component: DashboardComponent
+        component: DashboardComponent,
+        canActivate: [authGuard]
     },
     {
         path: "form",
-        component: ReactiveFormsComponent
+        component: ReactiveFormsComponent,
+        canActivate: [authGuard]
     },
     {
         path: "apidashbord",
-        component: APIDashbordComponent
+        component: APIDashbordComponent,
+        canActivate: [authGuard]
     },
     {
         path: "login",

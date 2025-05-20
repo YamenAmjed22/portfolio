@@ -27,10 +27,10 @@ export class ContactComponent {
   })
 
   constructor(
-    private router : Router,
+    private router: Router,
     private contactService: ContactService,
     private notificationService: NotificationService
-  ) {}
+  ) { }
 
   ngOnInit() {
     setTimeout(() => {
@@ -46,7 +46,7 @@ export class ContactComponent {
         this.contactForm.reset();
         this.notificationService.success('Success', 'Message sent successfully');
         console.log("Response: ", response);
-        
+
       }, error: (error) => {
         this.notificationService.error('Error', 'Something went wrong!');
         console.error("Error: ", error)
@@ -55,6 +55,15 @@ export class ContactComponent {
   }
 
   goToDashboard() {
-    this.router.navigate(['/dashboard']); // Adjust if your route is named differentl
+    this.router.navigate(['/dashboard']); 
+  }
+
+  isAdmin(): boolean {
+    const token = localStorage.getItem('token');
+    if(!token) return false;
+    const payload = JSON.parse(atob(token.split('.')[1]));
+    console.log(payload);
+    return payload.role === 'ROLE_ADMIN'; 
+    
   }
 }

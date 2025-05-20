@@ -31,7 +31,7 @@
           Send Message
         </button>
 
-        <button [class.fade-in]="isContactVisible" [class.fade-delay-4]="isContactVisible" (click)="goToDashboard()"
+        <button *ngIf="isAdmin()" [class.fade-in]="isContactVisible" [class.fade-delay-4]="isContactVisible" (click)="goToDashboard()"
           type="button" class="bg-gray-600 hover:bg-gray-700 text-white font-semibold px-6 py-2 rounded transition">
           Go To Dashboard
         </button>
