@@ -8,6 +8,7 @@ import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
+import yamen.com.example.portfolio.Entitys.User;
 
 import java.security.Key;
 import java.util.Date;
@@ -33,17 +34,26 @@ public class JwtService {
         return claimsResolver.apply(claims);
     }
 
-    public String generateToken(UserDetails userDetails) {
-        return generateToken(new HashMap<>(), userDetails);
+    public String generateToken(User userDetails) {
+
+        Map<String, Object> extraClaims = new HashMap<>();
+
+        extraClaims.put("email", userDetails.getEmail());
+        extraClaims.put("firstname", userDetails.getFirstName());
+        extraClaims.put("lastname", userDetails.getLastName());
+        extraClaims.put("address", userDetails.getAddress());
+        extraClaims.put("phone", userDetails.getPhone());
+        extraClaims.put("isValid", userDetails.getIsValid());
+        extraClaims.put("role", userDetails.getRole().name());
+
+
+        return generateToken(extraClaims, userDetails);
     }
 
-    public String generateToken(Map<String, Object> extraClaims, UserDetails userDetails) {
+    public String generateToken(Map<String, Object> extraClaims, User userDetails) {
         return buildToken(extraClaims, userDetails, parseExpirationToMillis(jwtExpirationRaw));
     }
 
-//    Map<String, Object> claims = new HashMap<>();
-//    claims.put("role", "ADMIN");
-//    claims.put("userId", 123);
 
     public long getExpirationTime() {
         return parseExpirationToMillis(jwtExpirationRaw);
@@ -93,6 +103,11 @@ public class JwtService {
         if (value.endsWith("h")) return Long.parseLong(value.replace("h", "")) * 60 * 60 * 1000;
         if (value.endsWith("d")) return Long.parseLong(value.replace("d", "")) * 24 * 60 * 60 * 1000;
         return Long.parseLong(value); // default fallback to milliseconds
+    }
+
+
+    public String extractRole(String token) {
+        return  extractAllClaims(token).get("role",String.class);
     }
 
     private Key getSignInKey() {

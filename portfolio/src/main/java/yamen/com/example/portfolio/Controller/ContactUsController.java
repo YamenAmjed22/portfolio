@@ -5,6 +5,7 @@ import jakarta.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import yamen.com.example.portfolio.Entitys.ContactUs;
 import yamen.com.example.portfolio.Repos.ContactUsRepo;
@@ -17,6 +18,7 @@ import java.util.UUID;
 @RestController
 @CrossOrigin("*")
 @RequestMapping("/api/contactus")
+@PreAuthorize("@AdminService.isAdmin(principal.username)")
 public class ContactUsController {
     @Autowired
     private ContactUsService contactUsService;

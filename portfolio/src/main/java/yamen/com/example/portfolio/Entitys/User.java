@@ -1,5 +1,6 @@
 package yamen.com.example.portfolio.Entitys;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import jakarta.persistence.*;
@@ -30,11 +31,13 @@ public class User implements UserDetails {
     private boolean isValid = false;
     private String otp;
 
+    @Enumerated(EnumType.STRING)
+    private Role role;
     // getter and setter
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of();
+        return List.of(new SimpleGrantedAuthority(role.name()));
     }
 
     public String getPassword() {
@@ -129,4 +132,23 @@ public class User implements UserDetails {
         this.otp = otp;
     }
 
+    public String getUserName() {
+        return userName;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public boolean isValid() {
+        return isValid;
+    }
+
+    public void setValid(boolean valid) {
+        isValid = valid;
+    }
 }
